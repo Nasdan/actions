@@ -15,6 +15,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Checkout AWS repository
+        uses: actions/checkout@v3
+        with:
+          repository: Nasdan/actions
+          ref: main
       - name: Checking
         run: |
           ls -a
