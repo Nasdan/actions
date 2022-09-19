@@ -1,0 +1,21 @@
+name: Deploy to AWS EBS and Docker
+
+on:
+  workflow_call:
+    secrets:
+      AWS_EB_APP_NAME:
+        required: true
+
+env:
+  APP_VERSION_LABEL: ${{ secrets.AWS_EB_APP_NAME }}-${GITHUB_RUN_ID}-${GITHUB_SHA}-${GITHUB_RUN_ATTEMPT}
+
+jobs:
+  deploy-aws:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Checking
+        run: |
+          ls -a
+          echo ${env.APP_VERSION_LABEL}
