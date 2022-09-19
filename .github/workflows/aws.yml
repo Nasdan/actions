@@ -15,13 +15,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Checkout AWS repository
+      - name: Checkout Actions repository
         uses: actions/checkout@v3
         with:
           repository: Nasdan/actions
           ref: main
+          path: tmp
+      - name: Copy EBS deploy folders
+        run: |
+          cp -R /tmp/.ebextensions /.ebextensions
+          cp -R /tmp/.platform /.platform
+          rm -rf tmp
       - name: Checking
         run: |
           ls -a
           ls -a .github/workflows
+          ls -a .ebextensions
           echo ${{env.APP_VERSION_LABEL}}
