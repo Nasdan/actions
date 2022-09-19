@@ -23,4 +23,5 @@ jobs:
       - name: Checking
         run: |
           ls -a
+          ls -a .github/workflows
           echo ${{env.APP_VERSION_LABEL}}
