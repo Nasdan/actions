@@ -18,4 +18,4 @@ jobs:
       - name: Checking
         run: |
           ls -a
-          echo ${env.APP_VERSION_LABEL}
+          echo ${{env.APP_VERSION_LABEL}}
